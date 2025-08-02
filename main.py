@@ -59,14 +59,21 @@ def get_next_departures():
                 departure_timestamp_seconds = departure["realtimeDeparture"]
                 start_of_day = datetime.datetime.combine(datetime.date.today(), datetime.time.min)
                 departure_datetime = start_of_day + datetime.timedelta(seconds=departure_timestamp_seconds)
-                
+                current_datetime = datetime.datetime.now()
+
+                # Calculate time until departure
+                seconds_to_departure = (departure_datetime - current_datetime).seconds
+                minutes_to_departure = 0
+                if(seconds_to_departure > 0):
+                    minutes_to_departure = seconds_to_departure // 60
+
                 # Format the correctly calculated datetime object into a readable time string.
                 departure_time = departure_datetime.strftime('%H:%M:%S')
                 # Extract the transit line number and destination.
                 transit_number = departure["trip"]["route"]["shortName"]
                 destination = departure["headsign"]
 
-                print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time}")
+                print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time} - ({minutes_to_departure} min)")
 
     except requests.exceptions.RequestException as e:
         # Check for specific 401 error and provide a more helpful message.
