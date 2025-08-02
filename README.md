@@ -30,4 +30,4 @@ STOP_IDS=[YOUR-STOP-IDS]
 - [x] Connect to Digitransit API to retrieve local departure information
 - [x] Track multiple STOP_ID values at the same time
 - [ ] Filter specific routes at tracked STOP_ID to exclude any that are not relevant
-- [ ] Interface with a display (ex. [TRMNL](https://usetrmnl.com/)) running a service to update the results at regular intervals
+- [ ] Interface with a display technology (ex. [TRMNL](https://usetrmnl.com/)) running a service to update the results at regular intervals

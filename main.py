@@ -20,13 +20,13 @@ parameters = {
 
 def get_next_departures():
     """
-    Fetches and prints the next transit departures for the specified stop.
+    Fetches and prints the next transit departures for the specified stop(s).
     """
 
     # Check if the required environment variables are set.
     if not API_KEY or not API_ENDPOINT or not STOP_IDS:
         print("Error: Required environment variables are missing.")
-        print("Please ensure API_KEY, API_ENDPOINT, and STOP_ID are set in your .env file or environment.")
+        print("Please ensure API_KEY, API_ENDPOINT, and STOP_IDS are set in your .env file")
         return
 
     try:
@@ -61,7 +61,7 @@ def get_next_departures():
                 departure_datetime = start_of_day + datetime.timedelta(seconds=departure_timestamp_seconds)
                 current_datetime = datetime.datetime.now()
 
-                # Calculate time until departure
+                # Calculate time until departure in minutes
                 seconds_to_departure = (departure_datetime - current_datetime).seconds
                 time_to_departure = ""
                 if(seconds_to_departure > 0):
@@ -105,7 +105,7 @@ def getGraphQL_query():
         stops(ids: ["%s"]) {
             name
             vehicleMode
-            stoptimesWithoutPatterns(numberOfDepartures: 5) {
+            stoptimesWithoutPatterns(numberOfDepartures: 5, omitNonPickups: true) {
             realtimeDeparture
             headsign
             trip {
