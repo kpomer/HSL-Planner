@@ -84,7 +84,7 @@ def get_next_departures():
             transit_number = departure["trip"]["route"]["shortName"]
             destination = departure["headsign"]
 
-            print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time} - {departure_timestamp_seconds}")
+            print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time}")
 
     except requests.exceptions.RequestException as e:
         # Check for specific 401 error and provide a more helpful message.
