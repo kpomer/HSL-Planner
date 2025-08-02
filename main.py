@@ -48,7 +48,7 @@ def get_next_departures():
             vehicle_mode = s["vehicleMode"]
             departures = s["stoptimesWithoutPatterns"]
 
-            print(f"\nNext departures for stop: {stop_name} {vehicle_mode}:")
+            print(f"\nNext departures for {vehicle_mode} stop: {stop_name}:")
 
             if not departures:
                 print("No upcoming departures found.")
@@ -63,9 +63,11 @@ def get_next_departures():
 
                 # Calculate time until departure
                 seconds_to_departure = (departure_datetime - current_datetime).seconds
-                minutes_to_departure = 0
+                time_to_departure = ""
                 if(seconds_to_departure > 0):
-                    minutes_to_departure = seconds_to_departure // 60
+                    time_to_departure = f"{seconds_to_departure // 60} min"
+                else:
+                    time_to_departure = "DEPARTED"
 
                 # Format the correctly calculated datetime object into a readable time string.
                 departure_time = departure_datetime.strftime('%H:%M:%S')
@@ -73,7 +75,7 @@ def get_next_departures():
                 transit_number = departure["trip"]["route"]["shortName"]
                 destination = departure["headsign"]
 
-                print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time} - ({minutes_to_departure} min)")
+                print(f"  {i+1}. Line {transit_number} to {destination} at {departure_time} - ({time_to_departure})")
 
     except requests.exceptions.RequestException as e:
         # Check for specific 401 error and provide a more helpful message.
