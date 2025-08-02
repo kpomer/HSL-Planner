@@ -16,15 +16,15 @@ I've built this project to gather the realtime departure schedule from my local 
    - `STOP_IDS` should be set for your preferred HSL stop location. See [Digitransit Documentation](https://digitransit.fi/en/developers/apis/1-routing-api/stops/) for details.
      - Supports a single stop (ex. "HSL:11235") or multiple stops in csv format (ex. "HSL:11235,HSL:81321")
 
+   ```
+   API_ENDPOINT="https://api.digitransit.fi/routing/v2/hsl/gtfs/v1"
+
+   API_KEY=[YOUR-API-KEY]
+
+   STOP_IDS=[YOUR-STOP-IDS]
+   ```
+
 3. Run the `main.py` file from the command line
-
-```
-API_ENDPOINT="https://api.digitransit.fi/routing/v2/hsl/gtfs/v1"
-
-API_KEY=[YOUR-API-KEY]
-
-STOP_IDS=[YOUR-STOP-IDS]
-```
 
 ---
 
