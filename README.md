@@ -21,3 +21,10 @@ API_KEY=[YOUR-API-KEY]
 
 STOP_ID=[YOUR-STOP-ID]
 ```
+
+---
+
+### Future Features
+
+- [ ] Track multiple STOP_IDs at the same time
+- [ ] Allow data to be shown on a display (ex. [TRMNL](https://usetrmnl.com/)) which updates at regular intervals
